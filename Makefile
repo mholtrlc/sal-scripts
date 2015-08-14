@@ -1,8 +1,8 @@
 USE_PKGBUILD=1
 include /usr/local/share/luggage/luggage.make
-PACKAGE_VERSION=0.5.1.1
+PACKAGE_VERSION=0.6.0
 TITLE=sal_scripts
-PACKAGE_NAME=sal_scripts
+PACKAGE_NAME=${TITLE}-${PACKAGE_VERSION}
 REVERSE_DOMAIN=com.github.salopensource
 PAYLOAD=\
 	pack-yaml \
@@ -22,6 +22,5 @@ l_munki: l_usr_local
 	@sudo chown root:wheel ${WORK_D}/usr/local/munki/preflight.d
 
 pack-sal-submit: l_munki
-	@sudo ${CP} sal-postflight ${WORK_D}/usr/local/munki/postflight.d/sal-postflight
-	@sudo chown -R root:wheel ${WORK_D}/usr/local/munki/postflight.d/sal-postflight
-	@sudo chmod -R 755 ${WORK_D}/usr/local/munki/postflight.d/sal-postflight
+	@sudo ${INSTALL} -m 755 -g wheel -o root "sal-postflight" ${WORK_D}/usr/local/munki/postflight.d
+	@sudo ${INSTALL} -m 755 -g wheel -o root "sal-preflight" ${WORK_D}/usr/local/munki/preflight.d
