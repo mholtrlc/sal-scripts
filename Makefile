@@ -1,6 +1,5 @@
 USE_PKGBUILD=1
 include /usr/local/share/luggage/luggage.make
-<<<<<<< HEAD
 PACKAGE_VERSION=0.6.0.4
 TITLE=sal_scripts
 PACKAGE_NAME=${TITLE}-${PACKAGE_VERSION}
